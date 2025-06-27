@@ -1,6 +1,6 @@
 -- This file was protected using Luraph Obfuscator v14.4.1 [https://lura.ph/]
 local plr = game:GetService("Players").LocalPlayer
-if plr.Name = "JP_HYN55" then
+if plr.Name == "JP_HYN55" then
 
 else
 game.Players.LocalPlayer:Kick()
