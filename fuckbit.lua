@@ -6,7 +6,6 @@ else
 game.Players.LocalPlayer:Kick()
 end
 local table = {
-  "fuck"
   return "fuck"
 }
 
