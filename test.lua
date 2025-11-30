@@ -1,7 +1,12 @@
 -- Roblox 高级通知系统
--- 功能：创建可自定义的通知UI，支持多种样式、动画效果和队列管理
+-- 功能：创建可自定义的通知UI，支持多种样式、动画效果、拖放和声音效果
 
 local Notify = {}
+
+-- 服务引用
+local TweenService = game:GetService("TweenService")
+local SoundService = game:GetService("SoundService")
+local UserInputService = game:GetService("UserInputService")
 
 -- 通知配置
 local config = {
@@ -11,8 +16,12 @@ local config = {
     offsetBetweenNotifs = 60, -- 通知之间的垂直间距
     maxVisibleNotifs = 5, -- 最大可见通知数
     defaultPosition = UDim2.new(1, -260, 0, 20), -- 默认位置（右上角）
-    animationStyle = "slide", -- 动画样式: slide, fade, bounce
-    defaultTheme = "default" -- 默认主题
+    animationStyle = "slide", -- 动画样式: slide, fade, bounce, zoom, elastic
+    defaultTheme = "default", -- 默认主题
+    enableSounds = true, -- 是否启用声音
+    enableDrag = true, -- 是否启用拖放
+    autoHideContainer = false, -- 没有通知时自动隐藏容器
+    containerVisible = true -- 容器可见状态
 }
 
 -- 通知主题
