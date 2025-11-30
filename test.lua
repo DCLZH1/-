@@ -93,8 +93,11 @@ local function createNotificationIcon(theme)
     iconFrame.Size = UDim2.new(0, 36, 0, 36)
     iconFrame.BackgroundColor3 = theme.iconColor
     iconFrame.BorderSizePixel = 0
-    iconFrame.Shape = Enum.Shape.RoundCorner
-    iconFrame.CornerRadius = UDim.new(0, 6)
+    
+    -- 使用UICorner代替Shape属性实现圆角
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0, 6)
+    uiCorner.Parent = iconFrame
     
     return iconFrame
 end
@@ -511,5 +514,9 @@ end
 --     end
 -- })
 
-return Notify
+-- 导出通知系统
+_G.Notify = Notify
 
+print("[高级通知系统] 已加载")
+
+return Notify
