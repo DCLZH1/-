@@ -327,8 +327,10 @@ function ModernNotify:_CreateNotificationUI(notification)
         closeButton.Text = "×"
         closeButton.Parent = contentContainer
         
-        closeButton.MouseButton1Click:Connect(function()
-            self:_CloseNotification(frame, notification)
+        closeButton.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                self:_CloseNotification(frame, notification)
+            end
         end)
     end
     
@@ -354,12 +356,14 @@ function ModernNotify:_CreateNotificationUI(notification)
     
     -- 设置点击事件
     if notification.canDismiss or notification.onClick then
-        frame.MouseButton1Click:Connect(function()
-            if notification.onClick then
-                notification.onClick()
-            end
-            if notification.canDismiss then
-                self:_CloseNotification(frame, notification)
+        frame.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                if notification.onClick then
+                    notification.onClick()
+                end
+                if notification.canDismiss then
+                    self:_CloseNotification(frame, notification)
+                end
             end
         end)
     end
