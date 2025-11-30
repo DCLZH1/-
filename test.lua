@@ -516,7 +516,4 @@ end
 
 -- 导出通知系统
 _G.Notify = Notify
-
-print("[高级通知系统] 已加载")
-
 return Notify
