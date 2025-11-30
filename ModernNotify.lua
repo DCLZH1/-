@@ -845,8 +845,8 @@ function ModernNotify:ClearAll()
         end
         
         -- 调用onClose回调
-        if notificationFrame:FindFirstChild('notification') and type(notificationFrame.notification) == 'table' and notificationFrame.notification.onClose then
-            notificationFrame.notification.onClose()
+        if notification and type(notification) == 'table' and notification.onClose then
+            notification.onClose()
         end
         
         notificationFrame:Destroy()
